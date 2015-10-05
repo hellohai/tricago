@@ -1,0 +1,95 @@
+// General	
+.generic-layout {
+	width: 100%;margin: 0 auto;
+	h1, h2, h3, h4, h5, h6 { clear: both; margin: 0; color: #3c3d3d; }
+	
+	h1 { font-size: rem(48px); line-height: (52px); margin-bottom: rem(20px); font-family: 'roboto-slab-thin';}
+	h2 { font-size: rem(36px); line-height: (42px); margin-bottom: rem(13px); font-family: 'roboto-slab-reg';}
+	h3 { font-size: rem(32px); line-height: (38px); margin-bottom: rem(13px); font-family: 'roboto-slab-reg';}
+	h4 { font-size: rem(26px); line-height: (32px); margin-bottom: rem(15px); font-family: 'roboto-slab-reg';}
+	h5 { font-size: rem(24px); line-height: (32px); margin-bottom: rem(15px); font-family: 'roboto-slab-thin';}
+	h6 { font-size: rem(24px); line-height: (32px); margin-bottom: rem(15px); font-family: 'roboto-slab-reg';}
+		
+	a {
+		color: #5091cd; text-decoration: underline;
+		&:hover {
+			text-decoration: none;
+		}
+	}
+	
+	blockquote {
+		color: #a5a5a5; font-size: rem(24px); line-height: rem(34px); font-style: italic; text-align: center; margin: rem(0px 0px 50px);
+	}
+	
+	@include bp(four-column, true) {
+		img { display: block; margin: 0 auto rem(20px); }
+		
+	}
+	@include bp(eight-column) {
+		.alignleft { float: left; margin: 0 10px 10px 0; }
+		.alignright { float: right; margin: 0 0 10px 10px; }
+	}
+	@include bp(twelve-column) {
+		width: 80%;
+	}
+}
+
+p, ul, dl, table {
+	font-size: rem(18px); line-height: rem(28px); margin: rem(0px 0px 16px);
+}
+
+hr {
+	margin: 0; outline: none; border: none; height: rem(7px);
+	background: transparent url(../svg/bg-section-title-repeat.svg) left bottom repeat-x;
+	
+	&.dotted {
+		height: rem(2px); margin: rem(50px 0px);
+	}
+	
+	&.spacing-bottom {
+		margin-bottom: rem(47px);
+	}
+}
+
+// Shortcodes
+@include bp(eight-column) {
+	[class*="column-"] {
+		overflow: hidden; width:100%; margin-bottom: rem(30px);
+		.button-link {
+			float: none; display: block; width: 70%;
+		}
+	}
+}
+@include bp(twelve-column) {
+	[class*="column-"] {
+		display: inline; float: left; width:50%;
+		.button-link {
+			width: 70%;
+		}
+	}
+	
+	.column-2 {
+		width: 50%;
+	}
+	
+	.column-3 {
+		width: 33%;
+	}
+}
+
+
+// INTERNAL
+@include bp(eight-column){
+}
+
+@include bp(twelve-column){
+}
+
+@include bp(sixteen-column){
+}
+
+
+
+// RANDOM ONE-OFFS
+
+

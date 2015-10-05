@@ -1,0 +1,104 @@
+.img-header {
+	background: url(../../library/img/gen/img-header1.jpg) center center;
+	background-size: cover;
+	height: 200px;
+}
+.h1-expand {
+	font-size: 10vw;
+	text-align: center;
+	text-shadow: black 1px 1px 5px;
+	//border-top: 1px solid #ccc;
+	padding-top: 100px;
+	color: white;
+	margin: 0;
+}
+.section {
+	margin-bottom: 25px;
+	p {
+		font-size: 14px;line-height: 1.4;
+	}
+	h2 {
+		text-align: center;
+		margin: 15px 0 5px;
+	}
+	.table-container {
+		
+	}
+	table {
+		font-size: 12px;
+		overflow: scroll;
+		width: 550px;
+		margin: 0 auto;
+		.th {
+			font-weight: bold;
+			//border-bottom: 1px solid #ccc;
+		}
+		// tr:nth-of-type(odd) {
+		// 	background-color: #efefef;
+		// }
+		td {
+			width: 15%;
+			display: inline-block;
+			padding: 3px;
+		}
+	}
+}
+
+.site-header {
+	h1 {
+		text-align: center;
+		margin: 20px 0 10px;
+	}
+}
+.section-flight {
+	//background-color: #f0f0f0;	
+}
+.section-hotel {
+	//background-color: #e3e3e3;
+	background: #efefef;
+	text-align: center;
+}
+.section-agenda {
+	//background-color: #d7d7d7;
+	table {
+		td {
+			width: 28%;
+		}
+	}
+}
+.agenda1 {
+	//background-color: #cacaca;
+}
+.agenda2 {
+	//background-color: #bdbdbd;
+	margin-bottom: 60px;
+}
+
+@include bp(four-column, true) {
+
+}
+
+@include bp(eight-column) {
+	.img-header {
+		height: 300px;
+	}
+	.h1-expand {
+		font-size: 70px;
+	}
+	.see-more {
+		display: none;
+	}
+}
+
+@include bp(twelve-column) {
+
+}
+
+@include bp(sixteen-column) {
+	
+}
+
+
+
+
+

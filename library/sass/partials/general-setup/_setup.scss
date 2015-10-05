@@ -1,0 +1,200 @@
+// fonts
+@font-face {
+    font-family: 'roboto-slab-light';
+    src: url('../fonts/roboto-slab/RobotoSlab-Light-webfont.eot');
+    src: url('../fonts/roboto-slab/RobotoSlab-Light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/roboto-slab/RobotoSlab-Light-webfont.woff') format('woff'),
+         url('../fonts/roboto-slab/RobotoSlab-Light-webfont.ttf') format('truetype'),
+         url('../fonts/roboto-slab/RobotoSlab-Light-webfont.svg#roboto-slab-light') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'roboto-slab-reg';
+    src: url('../fonts/roboto-slab/RobotoSlab-Regular-webfont.eot');
+    src: url('../fonts/roboto-slab/RobotoSlab-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/roboto-slab/RobotoSlab-Regular-webfont.woff') format('woff'),
+         url('../fonts/roboto-slab/RobotoSlab-Regular-webfont.ttf') format('truetype'),
+         url('../fonts/roboto-slab/RobotoSlab-Regular-webfont.svg#roboto-slab-reg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'roboto-slab-thin';
+    src: url('../fonts/roboto-slab/RobotoSlab-Thin-webfont.eot');
+    src: url('../fonts/roboto-slab/RobotoSlab-Thin-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/roboto-slab/RobotoSlab-Thin-webfont.woff') format('woff'),
+         url('../fonts/roboto-slab/RobotoSlab-Thin-webfont.ttf') format('truetype'),
+         url('../fonts/roboto-slab/RobotoSlab-Thin-webfont.svg#roboto-slab-thin') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+@font-face {
+    font-family: 'roboto-light';
+    src: url('../fonts/roboto/Roboto-Light-webfont.eot');
+    src: url('../fonts/roboto/Roboto-Light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/roboto/Roboto-Light-webfont.woff') format('woff'),
+         url('../fonts/roboto/Roboto-Light-webfont.ttf') format('truetype'),
+         url('../fonts/roboto/Roboto-Light-webfont.svg#roboto-light') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'roboto-reg';
+    src: url('../fonts/roboto/Roboto-Regular-webfont.eot');
+    src: url('../fonts/roboto/Roboto-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/roboto/Roboto-Regular-webfont.woff') format('woff'),
+         url('../fonts/roboto/Roboto-Regular-webfont.ttf') format('truetype'),
+         url('../fonts/roboto/Roboto-Regular-webfont.svg#roboto-reg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+/*============= GENERIC STYLES
+==============================================================================*/
+.section {
+body, select, input, textarea {
+	color: gray;
+	font-weight: 400;
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-size-adjust: none;
+	-webkit-backface-visibility: hidden;
+	font-size: 93%;
+	@include bp(eight-column){ font-size: 95%; }
+	@include bp(twelve-column){ font-size: 98%; }
+	@include bp(sixteen-column){ font-size: 100%; }
+	line-height: 1.25;
+}}
+
+// Clearfix
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+.clearfix:after {
+    clear: both;
+}
+html {
+	overflow-x: hidden;
+}
+body {
+	background-color: #fff;
+	overflow-x: hidden;
+	font-family: 'roboto-light', Verdana, sans-serif;
+}
+
+::-moz-selection { color: white; background: gray; }
+::selection { color: white; background: gray; } 
+
+::-webkit-input-placeholder { color: #5f5f5f; }
+:-moz-placeholder {color: #5f5f5f; }
+::-moz-placeholder { color: #5f5f5f; }
+:-ms-input-placeholder { color: #5f5f5f; }
+
+*, *:after, *:before {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+a { outline: none; border: none; color: #5091cd; &:hover { text-decoration: none; } }
+iframe {
+	max-width: 100%;
+}
+img {
+	max-width: 100%; // fluid images
+	height: auto; // Force correct aspect ratio in case we need it.
+	vertical-align: middle;
+}
+
+/*============= PATTERNS
+==============================================================================*/
+.section {
+	position: relative;	overflow: hidden;
+}
+
+// TYPOGRAPHY
+p {
+	color: #898c92;
+	font-family: 'Noto Sans', sans-serif;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Noto Sans';color:gray;font-weight: normal;
+}
+ // FORMS 
+ fieldset {
+ 	border:none;
+ }
+select, input, textarea,
+[type="submit"] {
+	font-family: "Noto Sans";
+}
+input { border-radius: 0; }// Getting rid of all the default border radius that gets applied to inputs on mobile safari
+
+// LISTS
+nav ul,
+nav ol { margin: 0; padding: 0; list-style: none; }
+
+// WRAPPER
+.wrapper { // Edge padding is half a gutter
+	margin: 0 auto; position: relative; z-index: 1; width: 100%;
+	@include bp(four-column, true){ width: rem(300px);  }
+	@include bp(eight-column, true){ width: rem(600px);  }
+	@include bp(twelve-column, true){ width: rem(960px);  }
+	@include bp(sixteen-column, true){ width: rem(1200px);  }
+	@include pie-clearfix();
+}
+
+// MISC
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+}
+
+/*============= SPRITE
+==============================================================================*/
+.sprite-main {
+	background-image: url(../img/sprites/sprite-main.png);
+	background-repeat: no-repeat;
+}
+/*============= BUTTONS
+==============================================================================*/
+.btn {
+	text-transform: uppercase;text-decoration: none;
+	max-width: 100%;width: 80%;
+	margin: 15px auto;padding: 0 10px;
+	text-align: center;font-family: "roboto-reg";font-weight: normal;font-size: 18px;
+	height: 35px;line-height: 35px;
+	border-radius: 10px;border: none;outline: none;
+	color: white;
+	display: block;
+	transition: .3s;
+}
+.btn-gray {
+	background: gray;
+	&:hover {
+		background: #e5e5e7;color:darken(gray,15%);
+	}
+}
+.btn-blue {
+	background: blue;
+	&:hover {
+		background: #ecf5fb;color:darken(blue,15%);
+	}
+}
+
+
+
+
+

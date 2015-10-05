@@ -1,0 +1,38 @@
+$pixelBase : 16; /* 1 */
+		
+@function parseInt($n) {
+	@return $n / ($n * 0 + 1); /* 2 */
+}
+		
+@function rem($values){ /* 3 */
+		
+	$list: (); /* 4 */
+		
+	@each $value in $values { /* 5 */
+		
+		$unit : unit($value); /* 6 */
+		$val  : parseInt($value); /* 2 */
+		
+		// FOR IE, needing to return pixels
+		@if ($px-only) and ($unit == 'rem') { /* 7 */
+			$list: append($list, ($val * $pixelBase) + px); /* 7 */
+		}
+		
+		// Return REMs for everyone else
+		@else if($px-only == false) and ($unit == 'px'){ /* 8 */
+			$list: append($list, ($val / $pixelBase + rem)); /* 8 */
+		}
+		
+		@else if($unit == 'px') or ($unit == 'rem'){ /* 8 */
+			$list: append($list, $value); /* 8 */
+		}
+		
+		@else {
+			@warn 'There is no unit conversion for #{$unit}'; /* 9 */
+		}
+		
+	}
+		
+	@return $list(); /* 10 */
+		
+}

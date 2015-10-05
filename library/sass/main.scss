@@ -1,0 +1,30 @@
+// config
+$px-only: false;
+
+// import sass functions
+@import "partials/general-setup/functions";
+
+
+// ------ Normalize CSS ------ //
+@import "partials/general-setup/normalize";
+
+
+// ------ Site's Fonts, Variables & Plugins ------ //
+@import "partials/general-setup/mixins";
+@import "partials/general-setup/variables";
+@import "partials/general-setup/setup";
+
+
+// ------ Site's Styles - Modules things ------ //
+@import "partials/site-modules/site-head";
+@import "partials/site-modules/site-foot";
+@import "partials/site-modules/site-home";
+@import "partials/site-modules/site-internal";
+@import "partials/site-modules/site-nav";
+@import "partials/site-modules/site-form";
+
+
+// ------ Site's Styles - Base & Plugins ------ //
+@import "partials/general-setup/print";
+@import "partials/plugin-stylesheets/bxslider";
+@import "partials/plugin-stylesheets/fancybox";

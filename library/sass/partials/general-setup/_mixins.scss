@@ -1,0 +1,103 @@
+// This mixin is created for use in stlyesheets to write inline MQs.
+// This creates the default min-width, but also to create a window for styles to live ONLY in 8 column or 12 column breakpoints by creating a min and max-width Media Query
+@mixin bp($column-size, $only: false) {
+	// We are using SASS Maps here, and you will need to have Sass 3.3.x or higher installed
+	// Open up Terminal and type sass -v to get your version number
+	// The variables below have been defined in the _variables.scss file
+	$mins: (
+		four-column: -1,
+		eight-column: $eight-column,
+		twelve-column: $twelve-column,
+		sixteen-column: $sixteen-column
+	);
+	$maxs: (	
+		four-column: $four-column-max,
+		eight-column: $eight-column-max,
+		twelve-column: $twelve-column-max,
+		sixteen-column: -1
+	);
+	
+	// Here, we are defining the min and max-width values of the Breakpoint we need.
+	$min-width: map-get($mins, $column-size);
+	$max-width: if($only == true, map-get($maxs, $column-size), -1);// This is an if/else statement. If true, then define max-width, else set max-width to -1
+	
+	// Now we need to find out which Media Query we are going to print back to our stylesheet
+	@if ($max-width == -1) {
+		@media screen and (min-width: $min-width) {
+			@content;
+		}
+	}
+	// This is only in here for hte four column, it's the only time min-width would ever be set to -1
+	@else if ($min-width == -1) {
+		@media screen and (max-width: $max-width) {
+			@content;
+		}
+	}
+	@else {
+		@media screen and (min-width: $min-width) and (max-width: $max-width) {
+			@content;
+		}
+	}
+}
+
+/* Examples:
+	@mixin bp(eight-column, true){
+		// ONLY 8 column
+	}
+	@mixin bp(eight-column){
+		// 8 column & Up
+	}
+*/
+
+
+// Here are some more magical mixins that I pulled from Compass cause I can't live without him
+@mixin clearfix {
+	overflow: hidden;
+}
+
+@mixin pie-clearfix {
+	&:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+}
+
+$pixelBase : 16; /* 1 */
+		
+@function parseInt($n) {
+	@return $n / ($n * 0 + 1); /* 2 */
+}
+		
+@function rem($values){ /* 3 */
+		
+	$list: (); /* 4 */
+		
+	@each $value in $values { /* 5 */
+		
+		$unit : unit($value); /* 6 */
+		$val  : parseInt($value); /* 2 */
+		
+		// FOR IE, needing to return pixels
+		@if ($px-only) and ($unit == 'rem') { /* 7 */
+			$list: append($list, ($val * $pixelBase) + px); /* 7 */
+		}
+		
+		// Return REMs for everyone else
+		@else if($px-only == false) and ($unit == 'px'){ /* 8 */
+			$list: append($list, ($val / $pixelBase + rem)); /* 8 */
+		}
+		
+		@else if($unit == 'px') or ($unit == 'rem'){ /* 8 */
+			$list: append($list, $value); /* 8 */
+		}
+		
+		@else {
+			@warn 'There is no unit conversion for #{$unit}'; /* 9 */
+		}
+		
+	}
+		
+	@return $list(); /* 10 */
+		
+}
